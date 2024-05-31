@@ -12,12 +12,36 @@
 
 :root {
   /* colors */
-  --link-color: #035fe6;
-  --link-hover-color: #136ff6;
-  --background-color: white;
-  --light-color: #eee;
-  --dark-color: #ccc;
-  --text-color: black;
+  --background-dark-color: #1E1F23;
+
+  /* links menu */
+  --menu-color: #2B2B2B;
+
+  /* colors for feature photo columns */
+  --charcoal-background:#2b2b2b;
+  --charcoal-secondary-text:#DDDDDD;
+  --charcoal-border: #606060;
+  --charcoal-text: var(--white);
+
+  --dark-brown-background: #43392f;
+  --dark-brown-text: #F8F8F8;
+  --dark-brown-secondary-text: #DDDDDD;
+  --dark-brown-border: #726b63;
+
+  --tan-background: #DDDAD0;
+  --tan-text: #392514;
+  --tan-border: #a6a49c;
+
+  /* global site colors */
+  --white: #ffffff;
+  --black: #000000;
+  --body-text-color: #1C1C1C;
+  --background-color: #F8F8F8;
+  --footer-background: #e3e3e2;
+  --footer-border: #ccc;
+
+
+  --gradient: linear-gradient(90deg, rgba(191, 212, 231, 0) 0, #2B2B2B 100%);
 
   /* fonts */
   --body-font-family: museo-sans, sans-serif;
