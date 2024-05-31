@@ -31,7 +31,10 @@ import {
   };
 
 const LCP_BLOCKS = [
-	'hero'
+	'hero',
+	'cta-grid',
+	'fullwidth-image',
+	'mega-menu'
 ]; // add your LCP blocks to the list
 
 const AUDIENCES = {
@@ -192,7 +195,7 @@ export function decorateMain(main) {
   // hopefully forward compatible button decoration
   decorateButtons(main);
   decorateIcons(main);
-  buildAutoBlocks(main);
+//   buildAutoBlocks(main);
   decorateSections(main);
   decorateBlocks(main);
 }
@@ -290,7 +293,23 @@ function aggregateTabSectionsIntoComponents(main) {
   });
 }
 
+export function makeVideo(element, href) {
+  element.innerHTML = `<video loop muted playsInline>
+    <source data-src="${href}" type="video/mp4" />
+  </video>`;
 
+  const video = element.querySelector('video');
+  const source = element.querySelector('video > source');
+
+  source.src = source.dataset.src;
+  video.load();
+
+  video.addEventListener('loadeddata', () => {
+    video.setAttribute('autoplay', true);
+    video.setAttribute('data-loaded', true);
+    video.play();
+  });
+}
 
 /**
  * Loads everything needed to get to LCP.
