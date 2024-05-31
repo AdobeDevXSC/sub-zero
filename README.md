@@ -2,8 +2,8 @@
 
 
 ## Environments
-- Preview: Preview: https://main--sub-zero--kp-adobe.hlx.page/
-- Live: https://main--sub-zero--kp-adobe.hlx.live/
+- Preview: Preview: https://main--sub-zero--AdobeDevXSC.hlx.page/
+- Live: https://main--sub-zero--AdobeDevXSC.hlx.live/
 
 ## Installation
 
