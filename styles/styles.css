@@ -118,6 +118,18 @@ h4 { font-size: var(--heading-font-size-m) }
 h5 { font-size: var(--heading-font-size-s) }
 h6 { font-size: var(--heading-font-size-xs) }
 
+/* subheadings */
+h5 {
+	text-transform: uppercase;
+	font-weight: 300;
+    font-size: 18px;
+    line-height: 22px;
+    letter-spacing: 1.35px;
+	font-family: var(--body-font-family);
+    margin: 0;
+	color: var(--white);
+}
+
 p, dl, ol, ul, pre, blockquote {
   margin-top: 1em;
   margin-bottom: 1em;
@@ -161,23 +173,27 @@ a.button:any-link, button {
   display: inline-block;
   box-sizing: border-box;
   text-decoration: none;
-  border: 2px solid transparent;
-  padding: 5px 30px;
-  text-align: center;
-  font-style: normal;
-  font-weight: 600;
+  padding: 8px 30px;
   cursor: pointer;
-  color: var(--background-color);
-  background-color: var(--link-color);
-  margin: 16px 0;
+  color: var(--black);
+  background-color: var(--white);
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  border-radius: 30px;
+  border-radius: 100px;
+  margin: 0 auto;
+  min-width: 162px;
+  width: fit-content;
+  font: normal normal normal 16px / 24px museo-sans;
+  font-weight: 300;
+  letter-spacing: .08px;
+  text-decoration: none;
+  transition: 0.2s all;
 }
 
 a.button:hover, a.button:focus, button:hover, button:focus  {
-  background-color: var(--link-hover-color);
+  background-color: var(--black);
+  color: var(--white);
   cursor: pointer;
 }
 
@@ -291,20 +307,16 @@ main .section.fullwidth-cta p.button-container {
 }
 
 main .section.fullwidth-cta p.button-container a {
-    min-width: 162px;
-	width: fit-content;
     border: 1px solid var(--white);
-    border-radius: 100px;
-	padding: 10px 35px;
-    text-align: center;
-    font: normal normal normal 16px / 24px museo-sans;
-    font-weight: 300;
-    letter-spacing: .08px;
-    text-decoration: none;
+	background-color: transparent;
     color: var(--white);
     display: flex;
-	transition: 0.2s all;
-	margin: 0 auto;
+	padding: 10px 35px;
+}
+
+main .section.fullwidth-cta p.button-container a:hover {
+	color: var(--background-dark-color);
+	background-color: var(--white);
 }
 
 /* envelope icon code */
