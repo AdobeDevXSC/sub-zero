@@ -1,0 +1,100 @@
+main .section.video-teaser-container {
+	padding: 0;
+}
+
+main .section.video-teaser-container .video-teaser-wrapper {
+	position: relative;
+	max-width: unset;
+}
+
+main .section.video-teaser-container .block.video-teaser .video-container {
+	max-height: 762px;
+	width: 100%;
+	overflow: hidden;
+}
+
+@media (max-width: 767px) {
+	main .section.video-teaser-container .block.video-teaser .video-container {
+		min-height: 615px;
+		border: solid 2px lime;
+	}
+
+	main .section.video-teaser-container .block.video-teaser .video-container video {
+		height: 100%;
+		min-height: 615px;
+		width: 100%;
+		object-fit: cover;
+	}
+}
+
+main .section.video-teaser-container .block.video-teaser .video-container video {
+	width: 100%;
+	display: block;
+}
+
+/* cta text styles */
+main .section.video-teaser-container .block.video-teaser div > div:not(.video-container) {
+	color: var(--white);
+	position: absolute;
+    justify-content: left;
+    left: 0;
+    max-width: 365px;
+	max-height: 270px;
+    margin-left: 244.5px;
+    z-index: 1;
+	top: 63.5%;
+	text-align: left;
+    margin-bottom: 52px;
+}
+
+@media (min-width: 1012px) {
+	main .section.video-teaser-container .block.video-teaser div > div:not(.video-container) {
+        top: 52%;
+		margin-bottom: 52px;
+    }
+}
+
+@media (min-width: 767px) and (max-width: 1011px) {
+	main .section.video-teaser-container .block.video-teaser div > div:not(.video-container) {
+        top: 43%;
+    }
+}
+
+@media (max-width: 767px) {
+	main .section.video-teaser-container .block.video-teaser div > div:not(.video-container) {
+        margin-left: 30px;
+        top: 58%;
+        padding-right: 90px;
+    }
+}
+
+
+main .section.video-teaser-container .block.video-teaser div > div:not(.video-container) h2 {
+	font-size: 50px;
+	line-height: 66px;
+	letter-spacing: 0;
+	text-align: left;
+	margin: 0 0 7.05px;
+}
+
+main .section.video-teaser-container .block.video-teaser div > div:not(.video-container) p:not(.button-container) {
+	font-size: 18px;
+	line-height: 22px;
+	letter-spacing: .09px;
+	font-weight: 300;
+}
+
+@media (max-width: 767px) {
+	main .section.video-teaser-container .block.video-teaser div > div:not(.video-container) h2 {	
+		font-size: 39px;
+		margin: 0;
+		padding-bottom: 9.2px;
+		line-height: 46px;
+	}
+	
+	main .section.video-teaser-container .block.video-teaser div > div:not(.video-container) p:not(.button-container) {
+		font-size: 16px;
+		line-height: 19px;
+		letter-spacing: .08px;
+	}
+}

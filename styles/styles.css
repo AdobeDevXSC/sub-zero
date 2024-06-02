@@ -130,6 +130,15 @@ h5 {
 	color: var(--white);
 }
 
+@media (max-width: 767px) {
+	h5 {
+		font-size: 13px;
+        line-height: 15px;
+        letter-spacing: 0.97px;
+	}
+}
+
+
 p, dl, ol, ul, pre, blockquote {
   margin-top: 1em;
   margin-bottom: 1em;
