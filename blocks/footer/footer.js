@@ -16,5 +16,16 @@ export default async function decorate(block) {
   const footer = document.createElement('div');
   while (fragment.firstElementChild) footer.append(fragment.firstElementChild);
 
+  // code for custom image section in footer   
+  const footerImageBlock = footer.querySelector('.footer-image-links');
+  const footerImages = footerImageBlock.querySelectorAll('img')
+  footerImages.forEach((image)=> {
+	const link = image.closest('a');
+	const linkHeading = document.createElement('h6');
+	linkHeading.innerHTML = `${image.alt}`;
+	link.append(linkHeading);
+	console.log(link)
+  })
+
   block.append(footer);
 }

@@ -185,7 +185,6 @@ a.button:any-link, button {
   font-family: var(--body-font-family);
   display: inline-block;
   box-sizing: border-box;
-  text-decoration: none;
   padding: 8px 30px;
   cursor: pointer;
   color: var(--black);
@@ -274,11 +273,12 @@ main .section.highlight {
   }
 
 
-  /* default content, dark, cta  */
+/* default content, dark, cta  */
 main .section.dark {
 	background-color: var(--background-dark-color);
 	color: var(--white);
 	padding: 44px 0 54px;
+	margin-top: 72px;
 }
 
 main .section.fullwidth-cta .default-content-wrapper {
@@ -322,7 +322,7 @@ main .section.fullwidth-cta p.button-container a:hover {
 	background-color: var(--white);
 }
 
-/* envelope icon code */
+/* envelope icon */
 main .section.fullwidth-cta .icon-envelope img {
 	display: none;
 }
@@ -354,6 +354,7 @@ main .section.fullwidth-cta .icon-envelope::after{
 @media (width <= 767px) {
 	main .section.fullwidth-cta {
 		padding: 44px 30px 54px;
+		margin-top: 96px;
 	}
 
 	main .section.fullwidth-cta h3,
