@@ -1,11 +1,79 @@
 /* header and nav layout */
 header .nav-wrapper {
-	background-color: var(--background-color);
 	width: 100%;
 	z-index: 2;
 	position: fixed;
+	color: var(--white);
+  }
+
+  header .nav-wrapper a {
+	text-decoration: none;
+    vertical-align: bottom;
+    display: inline-block;
+    font-size: 14px;
+    line-height: 20px;
+    position: relative;
+	letter-spacing: 1px;
+    z-index: 3;
+	font-weight: 300;
+    text-align: center;
+	font-family: var(--body-font-family);
+  }
+
+  header .nav-wrapper ul:first-of-type {
+	justify-content: flex-end;
+	align-items: center;
+	padding: 12px 28px 8px 0;
+  }
+
+  header .nav-wrapper ul:first-of-type li:last-of-type {
+	border: solid 1px var(--white);
+	color: #ccc;
+    font-size: 14px;
+    font-weight: 300 !important;
+    padding: 5px 0;
+	line-height: 18px;
+    height: 18px;
+	width: 265px;
+    text-indent: 8px;
+	position: relative;
+	background-color: var(--black);
+  }
+
+  header .nav-wrapper ul:first-of-type li:last-of-type::after {
+	content: '';
+	width: 16px;
+	height: 16px;
+	background: url(../../icons/search.svg);
+	background-repeat: no-repeat;
+	display: block;
+	position: absolute;
+	top: 50%;
+	transform: translateY(-50%);
+	right: -25px;
+	filter: invert(97%) sepia(41%) saturate(0%) hue-rotate(337deg) brightness(109%) contrast(100%);
+  }
+
+
+  header .nav-wrapper ul:nth-of-type(2) {
+	gap: 0px !important;
+	justify-content: flex-end;
   }
   
+  header .nav-wrapper ul:nth-of-type(2) a::after {
+	color: #fff;
+    content: "|";
+    margin-left: 10px;
+	margin-right: 10px;
+    position: static;
+  }
+
+  header .nav-wrapper ul:nth-of-type(2) li:last-of-type a:after {
+	display: none;
+  }
+
+
+
   header nav#nav {
 	box-sizing: border-box;
 	display: grid;
@@ -36,6 +104,7 @@ header .nav-wrapper {
 	}
   }
   
+  /* desktop layout styles */
   @media (width >= 900px) {
 	header nav#nav {
 	  display: flex;
@@ -147,10 +216,20 @@ header .nav-wrapper {
 	font-weight: 700;
 	line-height: 1;
   }
+
+  header nav#nav .nav-brand .default-content-wrapper p {
+	display: flex;
+	align-items: center;
+  }
   
   header nav#nav .nav-brand img {
-	width: 128px;
-	height: auto;
+	height: 18px;
+	width: auto;
+  }
+
+  header nav#nav .nav-brand a:nth-of-type(3) img {
+	height: 21px;
+	width: auto;
   }
   
   /* sections */
