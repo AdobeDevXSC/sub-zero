@@ -16,7 +16,7 @@ main .hero-container {
   max-width: 1200px;
   margin-left: auto;
   margin-right: auto;
-  color: white;
+  color: var(--white);
 }
 
 .hero picture {
@@ -60,7 +60,8 @@ main .hero-container .block.hero.video > div:not(.hero-cta) {
 }
 
 main .hero-container .block.hero.video > div > video {
-	height: 100;
+    min-width: 100%;
+	min-height: 100%;
 }
 
 main .hero-container .block.hero.video .hero-cta {

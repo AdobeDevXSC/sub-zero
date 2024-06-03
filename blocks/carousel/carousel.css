@@ -28,11 +28,10 @@ main .section.products.carousel-container .default-content-wrapper {
 	align-items: flex-start;
 }
 
+
 /* default carousel styles */
 .carousel .carousel-slides-container {
 	position: relative;
-	/* delete this once cors and other issues are resolved */
-	display: none;
 }
   
   .carousel .carousel-slides,

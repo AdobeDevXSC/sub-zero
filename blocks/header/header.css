@@ -4,6 +4,7 @@ header .nav-wrapper {
 	z-index: 2;
 	position: fixed;
 	color: var(--white);
+	padding-bottom: 8px;
   }
 
   header .nav-wrapper a {
@@ -18,8 +19,11 @@ header .nav-wrapper {
 	font-weight: 300;
     text-align: center;
 	font-family: var(--body-font-family);
+	border: none;
+	background-color: transparent;
   }
 
+  /* link list styles */
   header .nav-wrapper ul:first-of-type {
 	justify-content: flex-end;
 	align-items: center;
@@ -54,7 +58,6 @@ header .nav-wrapper {
 	filter: invert(97%) sepia(41%) saturate(0%) hue-rotate(337deg) brightness(109%) contrast(100%);
   }
 
-
   header .nav-wrapper ul:nth-of-type(2) {
 	gap: 0px !important;
 	justify-content: flex-end;
@@ -72,7 +75,11 @@ header .nav-wrapper {
 	display: none;
   }
 
-
+  /* link icon styles */
+  header nav#nav a .icon img {
+	display: block;
+	filter: invert(100%) sepia(0%) saturate(1%) hue-rotate(69deg) brightness(105%) contrast(102%);
+  }
 
   header nav#nav {
 	box-sizing: border-box;
@@ -209,7 +216,7 @@ header .nav-wrapper {
   }
   
   /* brand */
-  header .nav-brand {
+  header nav#nav .nav-brand {
 	grid-area: brand;
 	flex-basis: 128px;
 	font-size: var(--heading-font-size-s);
@@ -217,11 +224,13 @@ header .nav-wrapper {
 	line-height: 1;
   }
 
-  header nav#nav .nav-brand .default-content-wrapper p {
+  header nav#nav .nav-brand .default-content-wrapper,
+  header nav#nav .nav-brand .default-content-wrapper p:first-of-type {
 	display: flex;
 	align-items: center;
   }
   
+  /* logo sizing */
   header nav#nav .nav-brand img {
 	height: 18px;
 	width: auto;
@@ -231,7 +240,32 @@ header .nav-wrapper {
 	height: 21px;
 	width: auto;
   }
+
+  /* icon sizing */
+  header nav#nav .nav-brand .icon:not(.icon-location) {
+	margin-right: 9px;
+  }
+
+  header nav#nav .nav-brand .icon:not(.icon-location) img { 
+	height: 28px;
+	width: auto;
+  }
+
+  header nav#nav .nav-brand .icon:not(.icon-home) img { 
+	min-width: 40px;
+	min-height: 42px;
+  }
   
+  @media (width >= 900px) {
+	header nav#nav .nav-brand {
+
+	}
+
+	header nav#nav .nav-brand .icon:not(.icon-home) img { 
+		display: none;
+	}
+  }
+
   /* sections */
   header nav#nav .nav-sections {
 	grid-area: sections;

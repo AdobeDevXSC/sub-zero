@@ -97,13 +97,13 @@ async function fetchJson(link) {
 	const data = jsonData?.data;
 	return data;
   }
-	return 'an error occurred';
+	return `an error occurred, ${link}`;
 }
 
 let carouselId = 0;
 export default async function decorate(block) {
   carouselId += 1;
-  const isJSONCarousel = block.classList.contains('product');
+  const isJSONCarousel = block.classList.contains('product') || block.classList.contains('teaser');
 
   block.setAttribute('id', `carousel-${carouselId}`);
   const rows = block.querySelectorAll(':scope > div');
@@ -139,38 +139,54 @@ export default async function decorate(block) {
     container.append(slideNavButtons);
   }
 
+  // render JSON data in carousel   
   if(isJSONCarousel){  
-	const link = block.querySelector('a');
+	const link = block.querySelector('div > a');
   	const cardData = await fetchJson(link);
-	
-	console.log('carousel', cardData)
+
 	cardData.forEach((card, idx) => {
-		const picture = createOptimizedPicture(card.image, card.title, false, [{ width: 320 }]);
-		picture.lastElementChild.width = '320';
-		picture.lastElementChild.height = '180';
+		const productPicture = createOptimizedPicture(card.image, card.title, false, [{ width: 320 }]);
+		const teaserPicture = createOptimizedPicture(card.teaserImage, card.teaserTitle, false, [{ width: 320 }]);
+		teaserPicture.lastElementChild.width = '320';
+		teaserPicture.lastElementChild.height = '180';
 
 		const createdSlide = document.createElement('li');
 		createdSlide.dataset.slideIndex = idx;
 		createdSlide.setAttribute('id', `carousel-${carouselId}-slide-${idx}`);
 		createdSlide.classList.add('carousel-slide');
 
-		createdSlide.innerHTML = `
-        <div class="cards-card-image">
-          ${picture.outerHTML}
-        </div>
-        <div class="cards-card-body">
-          <h5>${card.product_name}</h5>
-		  <p>${card.copy}</p>
-          <p class="button-container">
-            <a href="${card.url}" aria-label="${card['anchor-text']}" title="${card['anchor-text']}" class="button">
-              Read More 
-              <span class="card-arrow">
-                <img class="icon" src="/icons/chevron-down.svg" />
-              </span>
-            </a>
-          </p>
-        </div>
-      `;
+		const isTeaser = block.classList.contains('teaser');
+
+		if(isTeaser){
+			createdSlide.innerHTML = `
+				<div class="cards-card-image">
+				${teaserPicture.outerHTML}
+				</div>
+				<div class="cards-card-body">
+				<h5>${card.teaserTitle}</h5>
+				<p>${card.teaserText}</p>
+				<p class="button-container">
+					<a href="${card.buttonLink}" aria-label="${card['anchor-text']}" title="${card['anchor-text']}" class="button">
+						${card.buttonLinkText}
+					</a>
+				</p>
+				</div>
+			`
+	  	} else {
+			createdSlide.innerHTML = `
+				<div class="cards-card-image">
+				${productPicture.outerHTML}
+				</div>
+				<div class="cards-card-body">
+				<h5>${card.title}</h5>
+				<p class="button-container">
+					<a href="${card.url}" aria-label="${card['anchor-text']}" title="${card['anchor-text']}" class="button">
+
+					</a>
+				</p>
+				</div>
+			`
+	  	}
 
 		const labeledBy = createdSlide.querySelector('h1, h2, h3, h4, h5, h6');
 		if (labeledBy) {
@@ -186,7 +202,7 @@ export default async function decorate(block) {
 			indicator.innerHTML = `<button type="button"><span>${placeholders.showSlide || 'Show Slide'} ${idx + 1} ${placeholders.of || 'of'} ${cardData.length}</span></button>`;
 			slideIndicators.append(indicator);
 		}
-	})
+	});
   } else {
 	rows.forEach((row, idx) => {
 		const slide = createSlide(row, idx, carouselId);
