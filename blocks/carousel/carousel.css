@@ -1,7 +1,17 @@
-/* TODO: reset display when styling */
-.carousel-container {
-	display: none;
+/* carousel headings */
+
+main .section.carousel-container .default-content-wrapper {
+	border: solid 2px lime;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
 }
+
+main .section.carousel-container .default-content-wrapper h5 {
+	color: var(--body-text-color);
+}
+
+
 
 .carousel .carousel-slides-container {
 	position: relative;

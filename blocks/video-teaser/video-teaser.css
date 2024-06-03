@@ -67,6 +67,9 @@ main .section.video-teaser-container .block.video-teaser div > div:not(.video-co
     }
 }
 
+main .section.video-teaser-container .block.video-teaser div > div:not(.video-container) h5 {
+	color: var(--white);
+}
 
 main .section.video-teaser-container .block.video-teaser div > div:not(.video-container) h2 {
 	font-size: 50px;

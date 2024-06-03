@@ -24,7 +24,6 @@ export default async function decorate(block) {
 	const linkHeading = document.createElement('h6');
 	linkHeading.innerHTML = `${image.alt}`;
 	link.append(linkHeading);
-	console.log(link)
   })
 
   block.append(footer);

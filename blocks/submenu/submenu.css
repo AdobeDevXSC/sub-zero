@@ -22,7 +22,7 @@ main .section.submenu-container .block.submenu > div > div > ul::after {
 	display: block;
     width: 172px;
     height: 100%;
-    background: linear-gradient(90deg, rgba(191, 212, 231, 0) 0, #2B2B2B 100%);
+    background: var(--gradient);
     position: absolute;
 	top: -15%;
     right: 0;

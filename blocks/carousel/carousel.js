@@ -142,6 +142,8 @@ export default async function decorate(block) {
   if(isJSONCarousel){  
 	const link = block.querySelector('a');
   	const cardData = await fetchJson(link);
+	
+	console.log('carousel', cardData)
 	cardData.forEach((card, idx) => {
 		const picture = createOptimizedPicture(card.image, card.title, false, [{ width: 320 }]);
 		picture.lastElementChild.width = '320';
