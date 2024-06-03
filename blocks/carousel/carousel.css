@@ -46,6 +46,7 @@ main .section.products.carousel-container .default-content-wrapper {
 	scroll-behavior: smooth;
 	scroll-snap-type: x mandatory;
 	overflow: scroll clip;
+	border: solid 2px lime;
   }
   
   .carousel .carousel-slides::-webkit-scrollbar {
@@ -62,6 +63,7 @@ main .section.products.carousel-container .default-content-wrapper {
 	position: relative;
 	width: 100%;
 	min-height: min(40rem, calc(100svh - var(--nav-height)));
+	background-color: var(--white);
   }
   
   .carousel .carousel-slide:has(.carousel-slide-content[data-align="center"]) {

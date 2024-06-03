@@ -143,24 +143,32 @@ export default async function decorate(block) {
   if(isJSONCarousel){  
 	const link = block.querySelector('div > a');
   	const cardData = await fetchJson(link);
+	console.log('cardData:', cardData);
 
-	cardData.forEach((card, idx) => {
-		const productPicture = createOptimizedPicture(card.image, card.title, false, [{ width: 320 }]);
-		const teaserPicture = createOptimizedPicture(card.teaserImage, card.teaserTitle, false, [{ width: 320 }]);
-		teaserPicture.lastElementChild.width = '320';
-		teaserPicture.lastElementChild.height = '180';
-
+	cardData.forEach((card, idx) => {		
 		const createdSlide = document.createElement('li');
 		createdSlide.dataset.slideIndex = idx;
 		createdSlide.setAttribute('id', `carousel-${carouselId}-slide-${idx}`);
 		createdSlide.classList.add('carousel-slide');
 
 		const isTeaser = block.classList.contains('teaser');
+		var pictureUrl = '';
+		
+		if(!isTeaser){
+			pictureUrl = card.image;
+		} else {
+			pictureUrl = card.teaserImage;
+		}
+		
+		const optimizedPicture = createOptimizedPicture(pictureUrl, card.teaserTitle, false, [{ width: 320 }]);
+		optimizedPicture.lastElementChild.width = '320';
+		optimizedPicture.lastElementChild.height = '180';
+		console.log('Optimized picture output:', optimizedPicture.outerHTML);
 
 		if(isTeaser){
 			createdSlide.innerHTML = `
 				<div class="cards-card-image">
-				${teaserPicture.outerHTML}
+					${optimizedPicture.outerHTML}
 				</div>
 				<div class="cards-card-body">
 				<h5>${card.teaserTitle}</h5>
@@ -172,10 +180,10 @@ export default async function decorate(block) {
 				</p>
 				</div>
 			`
-	  	} else {
+	  	} else {	
 			createdSlide.innerHTML = `
 				<div class="cards-card-image">
-				${productPicture.outerHTML}
+					${optimizedPicture.outerHTML}
 				</div>
 				<div class="cards-card-body">
 				<h5>${card.title}</h5>
