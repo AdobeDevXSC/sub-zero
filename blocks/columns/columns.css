@@ -19,7 +19,7 @@
   display: block;
 }
 
-@media (width >= 900px) {
+@media (width >= 767px) {
   .columns > div {
     align-items: center;
     flex-direction: unset;
@@ -165,3 +165,179 @@ main .section.connect .columns > div > div:not(.columns-img-col) p.button-contai
 	}
 }
 
+
+
+/* gallery columnns */
+main .section.gallery {
+	padding: 0;
+	margin: 64px 0;
+}
+
+main .section.gallery .columns-wrapper {
+	width: 100%;
+	max-width: unset;
+}
+
+main .section.gallery .columns > div {
+    gap: 0;
+	position: relative;
+	align-items: unset;
+}
+
+main .section.gallery .columns > div > .columns-img-col img {
+    display: block;
+    width: 100%;
+    object-fit: cover;
+    height: 100%;
+}
+
+main .section.gallery .columns > div > div:not(.columns-img-col) {
+	max-width: calc(50% - 140px);
+	padding-left: 70px;
+	position: relative;
+}
+
+/* text block typography */
+main .section.gallery .columns > div h5 {
+	font-size: 16px;
+	padding-top: 65px;
+	line-height: 19px;
+	letter-spacing: 1.2px;
+	text-align: left;
+	font-weight: 500;
+	margin-bottom: 4px;
+}
+
+main .section.gallery .columns > div h3 {
+	font-size: 50px;
+    min-height: 60px;
+    line-height: 57px;
+    letter-spacing: 0;
+    text-align: left;
+	margin: 0;
+	font-weight: 200;
+}
+
+main .section.gallery .columns > div p {
+	font-size: 18px;
+	min-height: 97px;
+	padding-top: 26px;
+	letter-spacing: 0.09px;
+	line-height: 25px;
+	font-weight: 300;
+	margin: 0 0 84px 0;
+	width: 63.49%;
+}
+
+/* block border designs */
+main .section.gallery .columns > div > div:not(.columns-img-col) {
+	margin-top: 70px;
+}
+
+main .section.gallery .columns > div:nth-of-type(2n + 1) > div:not(.columns-img-col) {
+	margin-right: 70px;
+
+}
+
+main .section.gallery .columns > div:nth-of-type(2n) > div:not(.columns-img-col) {
+	margin-left: 70px;
+}
+
+main .section.gallery .columns > div:nth-of-type(2n + 1) > div:not(.columns-img-col)::after{
+	content: "";
+	display: block;
+	min-height: 69px;
+	min-width: 69px; 
+	position: absolute;
+	top: -70px;
+	right: -70px;
+}
+
+main .section.gallery .columns > div:nth-of-type(2n) > div:not(.columns-img-col)::after{
+	content: "";
+	display: block;
+	min-height: 69px;
+	min-width: 69px; 
+	position: absolute;
+	top: -70px;
+	left: -70px;
+}
+
+/* charcoal text block */
+main .section.gallery .columns > div:first-of-type {
+	background-color: var(--charcoal-background);
+	color: var(--charcoal-text);
+}
+
+main .section.gallery .columns > div:first-of-type h5 {
+	color: var(--charcoal-secondary-text);
+}
+
+main .section.gallery .columns > div:first-of-type > div:not(.columns-img-col)::after{
+	border-left: 1px solid var(--charcoal-border);
+	border-bottom: 1px solid var(--charcoal-border);
+}
+
+main .section.gallery .columns > div:first-of-type > div:not(.columns-img-col) {
+	border-right: 1px solid var(--charcoal-border);
+	border-top: 1px solid var(--charcoal-border);
+}
+
+/* dark brown text block */
+main .section.gallery .columns > div:nth-of-type(2) {
+	background-color: var(--dark-brown-background);
+	color: var(--dark-brown-text);
+}
+
+main .section.gallery .columns > div:nth-of-type(2) h5 {
+	color: var(--dark-brown-secondary-text);
+}
+
+main .section.gallery .columns > div:nth-of-type(2) > div:not(.columns-img-col)::after{
+	border-right: 1px solid var(--dark-brown-border);
+	border-bottom: 1px solid var(--dark-brown-border);
+}
+
+main .section.gallery .columns > div:nth-of-type(2) > div:not(.columns-img-col) {
+	border-left: 1px solid var(--dark-brown-border);
+	border-top: 1px solid var(--dark-brown-border);
+}
+
+/* tan text block */
+main .section.gallery .columns > div:nth-of-type(3) {
+	background-color: var(--tan-background);
+	color: var(--tan-text);
+}
+
+main .section.gallery .columns > div:nth-of-type(3) h5 {
+	color: var(--tan-text);
+}
+
+main .section.gallery .columns > div:nth-of-type(3) > div:not(.columns-img-col)::after{
+	border-left: 1px solid var(--tan-border);
+	border-bottom: 1px solid var(--tan-border);
+}
+
+main .section.gallery .columns > div:nth-of-type(3) > div:not(.columns-img-col) {
+	border-right: 1px solid var(--tan-border);
+	border-top: 1px solid var(--tan-border);
+}
+
+@media (width <= 1020px) {
+	main .section.gallery .columns > div h3 {
+		font-size: 36px;
+		line-height: 57px;
+		letter-spacing: 0;
+	}
+
+	main .section.gallery .columns > div p {
+		width: 80%;
+	}
+}
+
+@media (width <= 767px) {
+	main .section.gallery .columns > div > div:not(.columns-img-col) {
+		width: calc(100% - 140px);
+		max-width: unset;
+	}
+}
