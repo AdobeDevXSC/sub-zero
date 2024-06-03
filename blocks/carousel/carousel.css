@@ -1,21 +1,39 @@
 /* carousel headings */
-
 main .section.carousel-container .default-content-wrapper {
-	border: solid 2px lime;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 }
 
 main .section.carousel-container .default-content-wrapper h5 {
-	color: var(--body-text-color);
+	margin: 0;
 }
 
+main .section.carousel-container .default-content-wrapper h3 {
+	margin: 0 0 12px 0;
+}
 
+main .section.carousel-container .default-content-wrapper p {
+	margin: 12px 0 24px 0;
+}
 
+main .section.carousel-container .default-content-wrapper img {
+	width: 176px;
+	height: 37px;
+	display: block;
+}
+
+/* product specific carousel heading */
+main .section.products.carousel-container .default-content-wrapper {
+	align-items: flex-start;
+}
+
+/* default carousel styles */
 .carousel .carousel-slides-container {
 	position: relative;
-  }
+	/* delete this once cors and other issues are resolved */
+	display: none;
+}
   
   .carousel .carousel-slides,
   .carousel .carousel-slide-indicators {
