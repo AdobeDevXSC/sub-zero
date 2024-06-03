@@ -1,0 +1,55 @@
+main .section.submenu-container {
+	background-color: var(--menu-color);
+	color: var(--white);
+	padding: 42px 0 42px 36px;
+	overflow-x: hidden;
+}
+
+main .section.submenu-container .block.submenu {
+	position: relative;
+}
+
+main .section.submenu-container .block.submenu > div > div > ul {
+	list-style: none;
+	display: flex;
+	padding: 0 0 10px 0;
+	margin-bottom: 19px;
+	overflow-x: scroll;
+}
+
+main .section.submenu-container .block.submenu > div > div > ul::after {
+    content:"";
+	display: block;
+    width: 172px;
+    height: 100%;
+    background: linear-gradient(90deg, rgba(191, 212, 231, 0) 0, #2B2B2B 100%);
+    position: absolute;
+	top: -15%;
+    right: 0;
+    opacity: 1;
+    pointer-events: none;
+}
+
+main .section.submenu-container .block.submenu > div > div > ul > li { 
+	margin: 0 24px 0 0;
+}
+
+main .section.submenu-container .block.submenu > div > div > ul > li > a {
+	font-family: var(--body-font-family);
+	display: inline-block;
+	box-sizing: border-box;
+	text-decoration: none;
+	padding: 8px 30px;
+	cursor: pointer;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	border-radius: 100px;
+	width: fit-content;
+	font: normal normal normal 16px / 24px museo-sans;
+	font-weight: 300;
+	letter-spacing: .08px;
+	border: solid 1px var(--white);
+	transition: 0.2s all;
+	text-align: center;
+}

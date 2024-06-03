@@ -104,3 +104,16 @@ main .hero-container .block.hero.video .hero-cta h1 sup {
 main .hero-container .block.hero.video .hero-cta .button {
 	display: block;
 }
+
+@media (width <= 767px) {
+	main .hero-container .block.hero.video .hero-cta h1 {
+		font-size: 50px;
+		margin-top: -15px;
+		margin-bottom: -15px;
+	}
+
+	main .hero-container .block.hero.video .hero-cta h1 sup {
+		font-size: 9px;
+		top: -25%;
+	}
+}

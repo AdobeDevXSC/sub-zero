@@ -131,6 +131,10 @@ h5 {
 }
 
 @media (max-width: 767px) {
+	h2, h3 {
+        font: normal normal normal 36px / 46px var(--heading-font-family); 
+	}
+
 	h5 {
 		font-size: 13px;
         line-height: 15px;
@@ -283,16 +287,6 @@ main .section.fullwidth-cta .default-content-wrapper {
 	align-items: center;
 }
 
-@media (width <= 782px) {
-	main .section.fullwidth-cta {
-		padding: 44px 20px 54px;
-	}
-
-	main .section.fullwidth-cta p {
-		width: auto;
-	}
-}
-
 main .section.fullwidth-cta h3 {
 	width: 650px;
     height: 65px;
@@ -357,13 +351,23 @@ main .section.fullwidth-cta .icon-envelope::after{
 	border: 2px solid var(--white);
 }
 
-@media (width <= 782px) {
+@media (width <= 767px) {
 	main .section.fullwidth-cta {
-		padding: 44px 20px 54px;
+		padding: 44px 30px 54px;
 	}
 
 	main .section.fullwidth-cta h3,
 	main .section.fullwidth-cta p {
 		width: auto;
+	}
+
+	main .section.fullwidth-cta h3 {
+		font: normal normal normal 36px / 46px var(--heading-font-family); 
+	}
+
+	main .section.fullwidth-cta p {
+		font-size: 16px;
+		line-height: 19px;
+		letter-spacing: .08px;
 	}
 }

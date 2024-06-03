@@ -31,3 +31,137 @@
     order: unset;
   }
 }
+
+/* connect section */
+main .section.connect .columns {
+	background-color: var(--white);
+}
+
+main .section.connect .columns > div {
+    flex-direction: unset;
+    gap: 0px;
+}
+
+main .section.connect .columns > div > .columns-img-col {
+	overflow: hidden;
+	min-width: 656.43px;
+    height: 500px;
+}
+
+main .section.connect .columns > div > .columns-img-col > picture > img {
+	min-width: 656.43px;
+	min-height: 500px;
+	transition: .6s all ease-out;
+	object-fit: cover;
+	object-position: center;
+}
+
+main .section.connect .columns:hover > div > .columns-img-col > picture > img {
+	transform: scale(1.06);
+}
+
+main .section.connect .columns > div > div:not(.columns-img-col) {
+    width: auto;
+    min-height: 241px;
+    margin-top: 105.27px;
+    margin-left: 67.57px;
+}
+
+main .section.connect .columns > div > div:not(.columns-img-col) h5 {
+	color: var(--black);
+}
+
+main .section.connect .columns > div > div:not(.columns-img-col) h2 {
+	margin: 0;
+}
+
+main .section.connect .columns > div > div:not(.columns-img-col) p:not(.button-container) {
+    text-align: left;
+    font: normal normal normal 18px / 24px museo-sans;
+    font-weight: 300;
+    letter-spacing: .09px;
+    color: var(--black);
+	margin-bottom: 32.48px;
+    width: 346px;
+}
+
+main .section.connect .columns > div > div:not(.columns-img-col) p.button-container a {
+	padding: 0;
+	font-weight: 500;
+}
+
+main .section.connect .columns > div > div:not(.columns-img-col) p.button-container a::after {
+	content: "";
+    border: 1.5px solid var(--black);
+    border-width: 0 2px 2px 0;
+    width: 6px;
+    height: 6px;
+    -ms-transform: translateX(0) rotate(-45deg);
+    transform: translateX(0) rotate(-45deg);
+    display: inline-block;
+    transition: 0.6s all ease-out;
+    opacity: 1;
+	margin-left: 5px;
+}
+
+main .section.connect .columns > div > div:not(.columns-img-col) p.button-container a:hover {
+	background-color: transparent;
+	color: var(--black);
+}
+
+main .section.connect .columns > div > div:not(.columns-img-col) p.button-container a:hover::after {
+	margin-left: 12px;
+    transition: .6s all 	
+}
+
+@media (width <= 1012px) {
+	main .section.connect {
+		padding: 64px;
+	}
+
+	main .section.connect .columns > div {
+		flex-direction: column;
+	}
+
+	main .section.connect .columns > div > .columns-img-col {
+        min-width: 364.5px;
+        height: 333.44px;
+	}
+
+	main .section.connect .columns > div > .columns-img-col > picture > img {
+		display: block;
+		height: auto;
+		width: 100%;
+		min-width: 364.5px;
+        min-height: 333.44px;
+		object-fit: cover;
+		object-position: center;
+	}
+
+	main .section.connect .columns > div > div:not(.columns-img-col) {
+		width: calc(100% - 96px);
+		margin-top: 0;
+		margin-left: 0;
+		padding: 48px;
+		position: relative;
+	}
+	
+	main .section.connect .columns > div > div:not(.columns-img-col) .button-container {
+		margin: 0;
+	}
+}
+
+@media (width <= 767px) {
+	main .section.connect {
+		padding: 64px 64px 0;
+		margin: 48px 0 0;
+	}
+
+	main .section.connect .columns div > div:not(.columns-img-col) p:not(.button-container) {
+		font-size: 16px;
+		line-height: 19px;
+		letter-spacing: .08px;
+		width: unset;
+	}
+}
+

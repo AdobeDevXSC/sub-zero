@@ -16,7 +16,6 @@ main .section.video-teaser-container .block.video-teaser .video-container {
 @media (max-width: 767px) {
 	main .section.video-teaser-container .block.video-teaser .video-container {
 		min-height: 615px;
-		border: solid 2px lime;
 	}
 
 	main .section.video-teaser-container .block.video-teaser .video-container video {
@@ -47,20 +46,20 @@ main .section.video-teaser-container .block.video-teaser div > div:not(.video-co
     margin-bottom: 52px;
 }
 
-@media (min-width: 1012px) {
+@media (width >= 1012px) {
 	main .section.video-teaser-container .block.video-teaser div > div:not(.video-container) {
         top: 52%;
 		margin-bottom: 52px;
     }
 }
 
-@media (min-width: 767px) and (max-width: 1011px) {
+@media (width <= 1012px) {
 	main .section.video-teaser-container .block.video-teaser div > div:not(.video-container) {
         top: 43%;
     }
 }
 
-@media (max-width: 767px) {
+@media (width <= 767px) {
 	main .section.video-teaser-container .block.video-teaser div > div:not(.video-container) {
         margin-left: 30px;
         top: 58%;
@@ -84,7 +83,7 @@ main .section.video-teaser-container .block.video-teaser div > div:not(.video-co
 	font-weight: 300;
 }
 
-@media (max-width: 767px) {
+@media (width <= 767px) {
 	main .section.video-teaser-container .block.video-teaser div > div:not(.video-container) h2 {	
 		font-size: 39px;
 		margin: 0;
