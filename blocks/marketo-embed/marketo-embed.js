@@ -10,5 +10,7 @@ export default function decorate(block) {
 
 	block.append(scriptDOM);
 	block.append(formDOM);
-	block.append(scriptLoadDOM);
+	//block.append(scriptLoadDOM);
+
+	MktoForms2.loadForm("//913-LBR-152.mktoweb.com", "913-LBR-152", 1005);
 }
