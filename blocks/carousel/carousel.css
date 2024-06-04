@@ -17,16 +17,31 @@ main .section.carousel-container .default-content-wrapper p {
 	margin: 12px 0 24px 0;
 }
 
+/* product specific carousel heading */
+main .section.products.carousel-container .default-content-wrapper {
+	align-items: flex-start;
+}
+
+
+
+
+/* teaser carousel styles */
 main .section.carousel-container .default-content-wrapper img {
 	width: 176px;
 	height: 37px;
 	display: block;
 }
 
-/* product specific carousel heading */
-main .section.products.carousel-container .default-content-wrapper {
-	align-items: flex-start;
+main .section.carousel .carousel .carousel-slides {
+
 }
+
+
+
+
+
+
+
 
 
 /* default carousel styles */

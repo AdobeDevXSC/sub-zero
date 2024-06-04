@@ -142,8 +142,8 @@ export default async function decorate(block) {
   // render JSON data in carousel   
   if(isJSONCarousel){  
 	const link = block.querySelector('div > a');
+	const linkWrapper = link.closest('div:not(.button-container)');
   	const cardData = await fetchJson(link);
-	console.log('cardData:', cardData);
 
 	cardData.forEach((card, idx) => {		
 		const createdSlide = document.createElement('li');
@@ -152,32 +152,42 @@ export default async function decorate(block) {
 		createdSlide.classList.add('carousel-slide');
 
 		const isTeaser = block.classList.contains('teaser');
-		var pictureUrl = '';
 		
+		var pictureUrl = '';
+		var logoUrl = '';
 		if(!isTeaser){
 			pictureUrl = card.image;
 		} else {
 			pictureUrl = card.teaserImage;
+			logoUrl = card.teaserLogo
 		}
-		
+
 		const optimizedPicture = createOptimizedPicture(pictureUrl, card.teaserTitle, false, [{ width: 320 }]);
 		optimizedPicture.lastElementChild.width = '320';
 		optimizedPicture.lastElementChild.height = '180';
-		console.log('Optimized picture output:', optimizedPicture.outerHTML);
+
+		const optimizedLogo = createOptimizedPicture(logoUrl, card.brand, false, [{ width: 320 }]);
+		optimizedLogo.lastElementChild.width = '320';
+		optimizedLogo.lastElementChild.height = '180';
 
 		if(isTeaser){
 			createdSlide.innerHTML = `
-				<div class="cards-card-image">
-					${optimizedPicture.outerHTML}
+				<div class="logo-wrapper">
+					${optimizedLogo.outerHTML}
 				</div>
-				<div class="cards-card-body">
-				<h5>${card.teaserTitle}</h5>
-				<p>${card.teaserText}</p>
-				<p class="button-container">
-					<a href="${card.buttonLink}" aria-label="${card['anchor-text']}" title="${card['anchor-text']}" class="button">
-						${card.buttonLinkText}
-					</a>
-				</p>
+				<div>
+					<div class="cards-card-image">
+						${optimizedPicture.outerHTML}
+					</div>
+					<div class="cards-card-body">
+						<h4>${card.teaserTitle}</h4>
+						<p>${card.teaserText}</p>
+						<p class="button-container">
+							<a href="${card.buttonLink}" aria-label="${card['anchor-text']}" title="${card['anchor-text']}" class="button">
+								${card.buttonLinkText}
+							</a>
+						</p>
+					</div>
 				</div>
 			`
 	  	} else {	
@@ -186,12 +196,11 @@ export default async function decorate(block) {
 					${optimizedPicture.outerHTML}
 				</div>
 				<div class="cards-card-body">
-				<h5>${card.title}</h5>
-				<p class="button-container">
-					<a href="${card.url}" aria-label="${card['anchor-text']}" title="${card['anchor-text']}" class="button">
-
-					</a>
-				</p>
+					<p class="button-container">
+						<a href="${card.url}" aria-label="${card['anchor-text']}" title="${card['anchor-text']}" class="button">
+						${card.title}
+						</a>
+					</p>
 				</div>
 			`
 	  	}
@@ -210,6 +219,8 @@ export default async function decorate(block) {
 			indicator.innerHTML = `<button type="button"><span>${placeholders.showSlide || 'Show Slide'} ${idx + 1} ${placeholders.of || 'of'} ${cardData.length}</span></button>`;
 			slideIndicators.append(indicator);
 		}
+
+		linkWrapper.remove();
 	});
   } else {
 	rows.forEach((row, idx) => {
