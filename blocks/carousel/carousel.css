@@ -23,52 +23,44 @@ main .section.products.carousel-container .default-content-wrapper {
 }
 
 
+
 /* teaser carousel styles */
-/* buttons - teaser*/
-@media (width >= 600px) {
-	main .section.teaser.carousel-container .carousel .carousel-slide-indicators {
-		display: flex;
-		justify-content: center;
-		gap: 5px;
-	}
-
-	main .section.teaser.carousel-container .carousel .carousel-slide-indicator button {
-		width: 10px;
-		height: 10px;
-		min-width: unset;
-		padding: 0;
-		border-radius: 1rem;
-		background-color: #E0E0E0;
-		border: 1px solid rgb(117, 117, 117);
-	}
-
-	main .section.teaser.carousel-container .carousel .carousel-slide-indicator button:disabled,
-	main .section.teaser.carousel-container .carousel .carousel-slide-indicator button:hover,
-	main .section.teaser.carousel-container .carousel .carousel-slide-indicator button:focus-visible {
-		background-color: #707070;
-	}
-
-	main .section.teaser.carousel-container .carousel .carousel-navigation-buttons {
-		position: absolute;
-		top: 50%;
-		transform: translateY(-50%);
-		left: -25px;
-		right: -25px;
-		display: flex;
-		align-items: center;
-		justify-content: space-between;
-		z-index: 1;
-		min-width: unset;
-	}
-
-	main .section.teaser.carousel-container .carousel .carousel-navigation-buttons .button {
-		width: 50px;
-		height: 50px;
-	}
+/* indicator buttons - teaser */
+main .section.teaser.carousel-container .carousel .carousel-slide-indicators {
+	display: flex;
+	justify-content: center;
+	gap: 5px;
 }
 
+main .section.teaser.carousel-container .carousel .carousel-slide-indicator button {
+	width: 10px;
+	height: 10px;
+	min-width: unset;
+	padding: 0;
+	border-radius: 1rem;
+	background-color: #E0E0E0;
+	border: 1px solid rgb(117, 117, 117);
+}
 
-/* slide styles - teaser */
+main .section.teaser.carousel-container .carousel .carousel-slide-indicator button:disabled,
+main .section.teaser.carousel-container .carousel .carousel-slide-indicator button:hover,
+main .section.teaser.carousel-container .carousel .carousel-slide-indicator button:focus-visible {
+	background-color: #707070;
+}
+
+/* nav buttons - teaser */
+main .section.teaser.carousel-container .carousel .carousel-navigation-buttons {
+	top: 50%;
+	transform: translateY(-30%);
+	left: -4.25vw;
+	right: -4.25vw
+}
+
+/* slides styles - teaser */
+main .section.carousel-container {
+	padding: 64px;
+}
+
 main .section.teaser.carousel-container .carousel-slide {
 	margin: 0 50px;
 }
@@ -85,7 +77,7 @@ main .section.teaser.carousel-container .carousel-slide.active .logo-wrapper {
 }
 
 main .section.teaser.carousel-container .carousel-slide .logo-wrapper img {
-	width: 176px;
+	max-width: 176px;
 	height: 37px;
 	display: block;
 }
@@ -108,6 +100,7 @@ main .section.teaser.carousel-container .carousel-slide .flex-wrapper img {
 	width: 100%;
 	object-fit: cover;
 	object-position: center center;
+	display: block;
 }
 
 main .section.teaser.carousel-container .carousel-slide .flex-wrapper:hover img {
@@ -157,6 +150,8 @@ main .section.teaser.carousel-container .carousel-slide .flex-wrapper .slide-bod
     padding-top: 18px;
     min-width: 289px;
     width: 50%;
+	margin-left: auto;
+    margin-right: auto;
 }
 
 main .section.teaser.carousel-container .carousel-slide .flex-wrapper p:not(.button-container) {
@@ -168,6 +163,10 @@ main .section.teaser.carousel-container .carousel-slide .flex-wrapper p:not(.but
 	color: var(--black);
 }
 
+main .section.teaser.carousel-container .carousel-slide .flex-wrapper p.button-container {
+	line-height: unset;
+}
+
 main .section.teaser.carousel-container .carousel-slide .flex-wrapper a {
 	border: 1px solid var(--black);
 	padding: 10px 35px;
@@ -175,7 +174,71 @@ main .section.teaser.carousel-container .carousel-slide .flex-wrapper a {
     font-weight: 500;
     line-height: 24px;
     letter-spacing: 0.08px;
+	display: inline-block;
 }
+
+@media (width <= 767px){
+	main .section.teaser.carousel-container .carousel .carousel-navigation-buttons {
+		top: 50%;
+		transform: translateY(-30%);
+		left: -0.25;
+		right: -0.25;
+	}
+
+	main .section.carousel-container {
+		padding: 64px 32px 32px;
+	}
+
+	main .section.teaser.carousel-container .carousel-slide .logo-wrapper {
+		margin: 20px auto 24px;
+	}
+
+	main .section.teaser.carousel-container .carousel-slide .flex-wrapper .slide-image {
+		flex: unset;
+	}
+
+	main .section.teaser.carousel-container .carousel-slide .flex-wrapper {
+		flex-direction: column;
+		max-height: unset;
+	}
+
+	main .section.teaser.carousel-container .carousel-slide .flex-wrapper .slide-body {
+        padding: 24px 12.5px 0 12.5px;
+		flex: unset;
+		max-height: 295px;
+	}
+
+	main .section.teaser.carousel-container .carousel-slide .flex-wrapper h4 {
+		font-size: 20px;
+		line-height: 24px;
+		letter-spacing: 2px;
+		margin: 0 0 12px 0;
+		padding: 0;
+	}
+
+	main .section.teaser.carousel-container .carousel-slide .flex-wrapper h4::after {
+		display: none;
+	}
+
+	main .section.teaser.carousel-container .carousel-slide .flex-wrapper .slide-body .content {
+        padding-bottom: unset;
+        padding-top: unset;
+        padding-left: 53.5px;
+        padding-right: 54.5px;
+	}
+
+	main .section.teaser.carousel-container .carousel-slide .flex-wrapper p:not(.button-container) {
+		font-size: 16px;
+		line-height: 25px;
+        letter-spacing: 0;
+	}
+
+	main .section.teaser.carousel-container .carousel-slide .flex-wrapper p.button-container {
+		margin: 18px 0;
+	}
+}
+
+
 
 /* default carousel styles */
 .carousel .carousel-slides-container {
@@ -274,59 +337,66 @@ main .section.teaser.carousel-container .carousel-slide .flex-wrapper a {
 	width: 1px;
 	white-space: nowrap;
   }
+
   
+  /* default navigation buttons container */
   .carousel .carousel-navigation-buttons {
 	position: absolute;
 	top: 50%;
 	transform: translateY(-50%);
-	left: 0.5rem;
-	right: 0.5rem;
+	left: 0;
+	right: 0;
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
 	z-index: 1;
   }
   
+  /* default/global individual nav button styles */
   /* stylelint-disable-next-line no-descending-specificity */
   .carousel .carousel-navigation-buttons button {
-	border-radius: 8px;
+	border-radius: 0;
 	margin: 0;
 	padding: 0;
-	width: 2rem;
-	height: 2rem;
-	position: relative;
-	background-color: rgba(0 0 0 / 25%);
-  }
-  
-  .carousel .carousel-navigation-buttons button:hover,
-  .carousel .carousel-navigation-buttons button:focus-visible {
-	background-color: rgba(0 0 0 / 80%);
-  }
-  
-
-
-.carousel .carousel-navigation-buttons button.slide-prev::after {
-	content:"";
+	width: 80px;
+	height: 80px;
+	min-width: unset;
+	background-color: transparent;
+	border: none;
 	display: block;
-	width: 45px;
-	height: 45px;
+	z-index: 100;
+	-webkit-transition: background-image 0.2s ease-in-out;
+	transition: background-image 0.2s ease-in-out;
+  }
+
+.carousel .carousel-navigation-buttons button.slide-prev {
 	background-image: url(https://main--sub-zero--adobedevxsc.hlx.live/images/prev.png);
-	background-position: 0 0;
+	background-position: center center;
 	background-repeat: no-repeat;
-	position: absolute;
-	top: 0;
-	right: 0;
+    background-size: 125%;
 }
 
-.carousel .carousel-navigation-buttons button.slide-next::after {
-	content:"";
-	display: block;
-	width: 45px;
-	height: 45px;
+.carousel .carousel-navigation-buttons button:hover.slide-prev,
+.carousel .carousel-navigation-buttons button:focus-visible.slide-prev {
+	background-image: url(https://main--sub-zero--adobedevxsc.hlx.live/images/prev-hover.png);
+}
+
+.carousel .carousel-navigation-buttons button.slide-next {
 	background-image: url(https://main--sub-zero--adobedevxsc.hlx.live/images/next.png);
-	background-position: 0 0;
+	background-position: center center;
 	background-repeat: no-repeat;
-	position: absolute;
-	top: 0;
-	right: 0;
+	background-size: 125%;
+}
+
+.carousel .carousel-navigation-buttons button:hover.slide-next,
+.carousel .carousel-navigation-buttons button:focus-visible.slide-next {
+	background-image: url(https://main--sub-zero--adobedevxsc.hlx.live/images/next-hover.png);
+}
+
+@media (width <= 767px){
+	.carousel .carousel-navigation-buttons button {
+		width: 54px;
+		height: 54px;
+		background-size: 150%;
+	}
 }
