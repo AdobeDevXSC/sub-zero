@@ -134,6 +134,7 @@ export function createTag(tag, attributes, children) {
  */
 
 function buildHeroBlock(main) {
+  if (getMetadata('autoblock') === 'false') return;
   const h1 = main.querySelector('h1');
   const picture = main.querySelector('picture');
   // eslint-disable-next-line no-bitwise
@@ -182,7 +183,6 @@ async function decorateTemplates(main) {
 	  console.error('Auto Blocking failed', error);
 	}
   }
-
 
 function autolinkModals(element) {
 	element.addEventListener('click', async (e) => {
@@ -355,6 +355,14 @@ async function loadEager(doc) {
 	await runEager(document, { audiences: AUDIENCES }, pluginContext);
 	}
 
+	// load experiments
+	//const experiment = toClassName(getMetadata('experiment'));
+	//const instantExperiment = getMetadata('instant-experiment');
+	//if (instantExperiment || experiment) {
+	//  const { runExperiment } = await import('./experimentation/index.js');
+	//  await runExperiment(experiment, instantExperiment, EXPERIMENTATION_CONFIG);
+	//}
+
     await window.hlx.plugins.run('loadEager', pluginContext);
 
 	window.adobeDataLayer = window.adobeDataLayer || [];
@@ -443,6 +451,17 @@ async function loadLazy(doc) {
   const { loadLazy: runLazy } = await import('../plugins/experimentation/src/index.js');
   await runLazy(document, { audiences: AUDIENCES }, pluginContext);
 }
+
+  // Load experimentation preview overlay
+  //if (window.location.hostname === 'localhost' || window.location.hostname.endsWith('.hlx.page')) {
+  //  const preview = await import(`${window.hlx.codeBasePath}/tools/preview/preview.js`);
+  //  await preview.default();
+  //  if (window.hlx.experiment) {
+  //    const experimentation = await import(`${window.hlx.codeBasePath}/tools/preview/experimentation.js`);
+  //    experimentation.default();
+  //  }
+  //}
+
   // Mark customer as having viewed the page once
   localStorage.setItem('franklin-visitor-returning', true);
 
@@ -453,7 +472,6 @@ async function loadLazy(doc) {
   // eslint-disable-next-line import/no-relative-packages
   const { initConversionTracking } = await import('../plugins/rum-conversion/src/index.js');
   await initConversionTracking.call(context, document);
-
 }
 
 /**
@@ -474,71 +492,113 @@ async function loadPage() {
 	loadDelayed();
 }
 
-export async function useGraphQL(query, param) {
-	const configPath = `${window.location.origin}/demo-config.json`;
-	let { data } = await fetchJson(configPath);
-	data = data && data[0];
-	if (!data) {
-	  console.log('config not present'); // eslint-disable-line no-console
-	  return;
-	}
-	const { origin } = window.location;
-  
-	if (origin.includes('.live')) {
-	  data['aem-author'] = data['aem-author'].replace('author', data['hlx.live']);
-	} else if (origin.includes('.page')) {
-	  data['aem-author'] = data['aem-author'].replace('author', data['hlx.page']);
-	}
-	data['aem-author'] = data['aem-author'].replace(/\/+$/, '');
-	const { pathname } = new URL(query);
-	const url = param ? new URL(`${data['aem-author']}${pathname}${param}`) : new URL(`${data['aem-author']}${pathname}`);
-	const options = data['aem-author'].includes('publish')
-	  ? {
-		headers: {
-		  'Content-Type': 'text/html',
-		},
-		method: 'get',
-	  }
-	  : {
-		headers: {
-		  'Content-Type': 'text/html',
-		},
-		method: 'get',
-		credentials: 'include',
-	  };
+export function addAnchorLink(elem) {
+	const link = document.createElement('a');
+	link.setAttribute('href', `#${elem.id || ''}`);
+	link.setAttribute('title', `Copy link to "${elem.textContent}" to clipboard`);
+	link.classList.add('anchor-link');
+	link.addEventListener('click', (e) => {
+	  e.preventDefault();
+	  navigator.clipboard.writeText(link.href);
+	  window.location.href = link.href;
+	  e.target.classList.add('anchor-link-copied');
+	  setTimeout(() => e.target.classList.remove('anchor-link-copied'), 1000);
+	});
+	link.innerHTML = elem.innerHTML;
+	elem.innerHTML = '';
+	elem.append(link);
+  }
+
+export async function fetchJson(href) {
+	const url = new URL(href);
 	try {
-	  const resp = await fetch(
+		const resp = await fetch(
 		url,
-		options,
-	  );
-  
-	  const error = new Error({
+		{
+			headers: {
+			'Content-Type': 'text/html',
+			},
+			method: 'get',
+			credentials: 'include',
+		},
+		);
+		const error = new Error({
 		code: 500,
 		message: 'login error',
-	  });
-  
-	  if (resp.redirected) throw (error);
-  
-	  const adventures = await resp.json();
-	  const environment = data['aem-author'];
-	  return { adventures, environment }; // eslint-disable-line consistent-return
+		});
+		if (resp.redirected) throw (error);
+
+		return resp.json();
 	} catch (error) {
-	  console.log(JSON.stringify(error)); // eslint-disable-line no-console
+		return error;
 	}
+}
+
+export async function useGraphQL(query, param) {
+  const configPath = `${window.location.origin}/demo-config.json`;
+  let { data } = await fetchJson(configPath);
+  data = data && data[0];
+  if (!data) {
+    console.log('config not present'); // eslint-disable-line no-console
+    return;
   }
-  
-  export function addElement(type, attributes, values = {}) {
-	const element = document.createElement(type);
-  
-	Object.keys(attributes).forEach((attribute) => {
-	  element.setAttribute(attribute, attributes[attribute]);
-	});
-  
-	Object.keys(values).forEach((val) => {
-	  element[val] = values[val];
-	});
-  
-	return element;
-  }  
+  const { origin } = window.location;
+
+  if (origin.includes('.live')) {
+    data['aem-author'] = data['aem-author'].replace('author', data['hlx.live']);
+  } else if (origin.includes('.page')) {
+    data['aem-author'] = data['aem-author'].replace('author', data['hlx.page']);
+  }
+  data['aem-author'] = data['aem-author'].replace(/\/+$/, '');
+  const { pathname } = new URL(query);
+  const url = param ? new URL(`${data['aem-author']}${pathname}${param}`) : new URL(`${data['aem-author']}${pathname}`);
+  const options = data['aem-author'].includes('publish')
+    ? {
+      headers: {
+        'Content-Type': 'text/html',
+      },
+      method: 'get',
+    }
+    : {
+      headers: {
+        'Content-Type': 'text/html',
+      },
+      method: 'get',
+      credentials: 'include',
+    };
+  try {
+    const resp = await fetch(
+      url,
+      options,
+    );
+
+    const error = new Error({
+      code: 500,
+      message: 'login error',
+    });
+
+    if (resp.redirected) throw (error);
+
+    const adventures = await resp.json();
+    const environment = data['aem-author'];
+    return { adventures, environment }; // eslint-disable-line consistent-return
+  } catch (error) {
+    console.log(JSON.stringify(error)); // eslint-disable-line no-console
+  }
+}
+
+export function addElement(type, attributes, values = {}) {
+  const element = document.createElement(type);
+
+  Object.keys(attributes).forEach((attribute) => {
+    element.setAttribute(attribute, attributes[attribute]);
+  });
+
+  Object.keys(values).forEach((val) => {
+    element[val] = values[val];
+  });
+
+  return element;
+}
 
 loadPage();
