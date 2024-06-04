@@ -138,7 +138,7 @@ export default async function decorate(block) {
       <button type="button" class= "slide-prev" aria-label="${placeholders.previousSlide || 'Previous Slide'}"></button>
       <button type="button" class="slide-next" aria-label="${placeholders.nextSlide || 'Next Slide'}"></button>
     `;
-
+	
     container.append(slideNavButtons);
   }
 
@@ -200,16 +200,16 @@ export default async function decorate(block) {
 			optimizedPicture.lastElementChild.width = '275';
 			optimizedPicture.lastElementChild.height = '275';
 			createdSlide.innerHTML = `
+			<a href="${card.url}" aria-label="${card['anchor-text']}" title="${card['anchor-text']}">
 				<div class="slide-image">
 					${optimizedPicture.outerHTML}
 				</div>
 				<div class="slide-body">
-					<p class="button-container">
-						<a href="${card.url}" aria-label="${card['anchor-text']}" title="${card['anchor-text']}" class="button">
+					<p class="button">
 						${card.title}
-						</a>
 					</p>
 				</div>
+				</a>
 			`
 	  	}
 
