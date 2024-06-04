@@ -12,8 +12,11 @@ function updateActiveSlide(slide) {
     aSlide.querySelectorAll('a').forEach((link) => {
       if (idx !== slideIndex) {
         link.setAttribute('tabindex', '-1');
+		aSlide.classList.remove('active')
+
       } else {
         link.removeAttribute('tabindex');
+		aSlide.classList.add('active');
       }
     });
   });
@@ -162,26 +165,29 @@ export default async function decorate(block) {
 			logoUrl = card.teaserLogo
 		}
 
-		const optimizedPicture = createOptimizedPicture(pictureUrl, card.teaserTitle, false, [{ width: 320 }]);
-		optimizedPicture.lastElementChild.width = '320';
-		optimizedPicture.lastElementChild.height = '180';
+		const optimizedPicture = createOptimizedPicture(pictureUrl, card.teaserTitle, false, [{ width: 900 }]);
 
 		const optimizedLogo = createOptimizedPicture(logoUrl, card.brand, false, [{ width: 320 }]);
 		optimizedLogo.lastElementChild.width = '320';
 		optimizedLogo.lastElementChild.height = '180';
 
 		if(isTeaser){
+			optimizedPicture.lastElementChild.width = '555';
+			optimizedPicture.lastElementChild.height = '701';
+
 			createdSlide.innerHTML = `
 				<div class="logo-wrapper">
 					${optimizedLogo.outerHTML}
 				</div>
-				<div>
-					<div class="cards-card-image">
+				<div class="flex-wrapper">
+					<div class="slide-image">
 						${optimizedPicture.outerHTML}
 					</div>
-					<div class="cards-card-body">
+					<div class="slide-body">
 						<h4>${card.teaserTitle}</h4>
-						<p>${card.teaserText}</p>
+						<div class="content">
+							<p>${card.teaserText}</p>
+						</div>
 						<p class="button-container">
 							<a href="${card.buttonLink}" aria-label="${card['anchor-text']}" title="${card['anchor-text']}" class="button">
 								${card.buttonLinkText}
@@ -190,12 +196,14 @@ export default async function decorate(block) {
 					</div>
 				</div>
 			`
-	  	} else {	
+	  	} else {
+			optimizedPicture.lastElementChild.width = '275';
+			optimizedPicture.lastElementChild.height = '275';
 			createdSlide.innerHTML = `
-				<div class="cards-card-image">
+				<div class="slide-image">
 					${optimizedPicture.outerHTML}
 				</div>
-				<div class="cards-card-body">
+				<div class="slide-body">
 					<p class="button-container">
 						<a href="${card.url}" aria-label="${card['anchor-text']}" title="${card['anchor-text']}" class="button">
 						${card.title}
