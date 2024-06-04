@@ -262,11 +262,7 @@ main .section.highlight {
 	line-height: normal;
   }
 
-.hlx-preview-overlay > .hlx-badge:first-of-type {
-	display: none; 
-}
-  
-.hlx-preview-overlay .hlx-badge .hlx-popup * {
+  .hlx-preview-overlay .hlx-badge .hlx-popup * {
 	font-size: 14px;
 }
 

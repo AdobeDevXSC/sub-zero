@@ -40,7 +40,6 @@
 
 .hlx-badge {
   --color: #888;
-
   border-radius: 2em;
   background-color: var(--color);
   border-style: solid;
@@ -100,6 +99,10 @@
 .hlx-badge.hlx-testing {
   background-color: #fa0f00;
   color: #fff;
+}
+
+.hlx-preview-overlay > .hlx-badge:first-of-type {
+	display: none; 
 }
 
 .hlx-popup {
